@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MachineNameIdDto>
+@{
+    ViewData["Title"] = "ManageMachines";
+}
+<h2>Manage Machines</h2>
+<br />
+<div>
+    <a asp-action="AddMachine" class="btn buy-now-btn">Add New Machine</a>
+</div>
+<br />
+<table class="table ">
+    <thead>
+        <tr>
+            <th>Machine Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var machine in Model)
+        {
+            <tr id="machine-@machine.Id">
+                <td>@machine.Name</td>
+                <td>
+                    <a class="btn btn-link btn-no-effect" asp-action="EditMachine" asp-route-id="@machine.Id">Edit </a>
+                    |
+                    <button class="btn btn-link btn-no-effect deleteBtn" data-id="@machine.Id">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+
+        $(".deleteBtn").click((e) => {
+            const id = $(e.target).data("id");
+            if (!confirm("Are you sure to delete?"))
+                return;
+
+            $.ajax({
+                url: '/admin/manageMachines/' + id,
+                type: 'DELETE',
+                success: () => {
+                    const target = $("#machine-" + id);
+                    $(target).fadeOut(500, () => $(target).remove());
+                },
+                error: (e) => {
+                    alert("Somthing Went Wrong", e);
+                }
+            });
+        });
+
+    </script>
+}

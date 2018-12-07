@@ -1,0 +1,51 @@
+﻿@model MachineCreateUpdateViewModel
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="MachineDto.Name"></label>
+                <input asp-for="MachineDto.Name" class="form-control" />
+                <span asp-validation-for="MachineDto.Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MachineDto.CategoryId"></label>
+                <select class="custom-select" asp-for="MachineDto.CategoryId">
+                    <option value=""></option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="MachineDto.CategoryId"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MachineDto.ShortDescription"></label>
+                <input asp-for="MachineDto.ShortDescription" class="form-control" />
+                <span asp-validation-for="MachineDto.ShortDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MachineDto.LongDescription"></label>
+                <textarea asp-for="MachineDto.LongDescription" class="form-control"></textarea>
+                <span asp-validation-for="MachineDto.LongDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MachineDto.Price"></label>
+                <input asp-for="MachineDto.Price" class="form-control" />
+                <span asp-validation-for="MachineDto.Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MachineDto.ImageUrl"></label>
+                <input asp-for="MachineDto.ImageUrl" class="form-control" />
+                <span asp-validation-for="MachineDto.ImageUrl"></span>
+            </div>
+          
+
+
+            <div class="form-group">
+                <button class="btn buy-now-btn">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

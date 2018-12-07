@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MyMOrderViewModel>
+
+@if (Model?.Count() <= 0)
+{
+    <div>
+        <p>No Order so far! Go ahead and place some order.</p>
+    </div>
+    return;
+}
+
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>Billing Address</th>
+            <th>Order Summary</th>
+            <th>Total Ammount</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var order in Model)
+        {
+            <tr>
+
+                <td class="text-justify">
+                    <div>
+                        @order.MOrderPlaceDetails.FirstName @order.MOrderPlaceDetails.LastName,
+                        @order.MOrderPlaceDetails.AddressLine
+                        <div>
+                         
+                        </div>
+                    </div>
+                    <div>
+                        @order.MOrderPlaceDetails.City,
+                    
+                    </div>
+                    <div>
+                     
+                    </div>
+                    <div>@order.MOrderPlaceDetails.PhoneNumber</div>
+               
+                    <br />
+                    <div>
+                        @order.OrderPlacedTime.Date.ToString("dd/MM/yyyy")
+                    </div>
+
+                </td>
+
+
+                <td>
+                    <table class="table">
+                        <tbody>
+                            @foreach (var item in order.MachineOrderInfos)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @item.Price.ToString("c") * @item.Qty
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+
+                    </table>
+                </td>
+                <td>
+                    @order.OrderTotal.ToString("c")
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

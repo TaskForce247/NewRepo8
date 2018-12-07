@@ -1,0 +1,116 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>WaterLoggic</RootNamespace>
+    <AssemblyName>WaterLoggic</AssemblyName>
+    <UserSecretsId>8b543430-7c4a-4850-af05-23531a6d7f31</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/8405ed2e-abdd-4619-9b21-8473d634684f/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WaterLoggic</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/8405ed2e-abdd-4619-9b21-8473d634684f/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WaterLoggic</ApplicationInsightsAnnotationResourceId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Compile Remove="Views\Cake\**" />
+    <Content Remove="Migrations\**" />
+    <Content Remove="Views\Cake\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="Views\Cake\**" />
+    <None Remove="Migrations\**" />
+    <None Remove="Views\Cake\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\CakeController.cs" />
+    <Compile Remove="Controllers\OrderController.cs" />
+    <Compile Remove="Controllers\ShoppingCartController.cs" />
+    <Compile Remove="Core\Dto\CakeDto.cs" />
+    <Compile Remove="Core\Dto\CakeNameIdDto.cs" />
+    <Compile Remove="Core\Dto\OrderDto.cs" />
+    <Compile Remove="Core\ICakeRepository.cs" />
+    <Compile Remove="Core\ICategoryRepository.cs" />
+    <Compile Remove="Core\IOrderRepository.cs" />
+    <Compile Remove="Core\IShoppingCartService.cs" />
+    <Compile Remove="Core\Models\Cake.cs" />
+    <Compile Remove="Core\Models\Category.cs" />
+    <Compile Remove="Core\Models\Order.cs" />
+    <Compile Remove="Core\Models\OrderDetail.cs" />
+    <Compile Remove="Core\Models\ShoppingCartItem.cs" />
+    <Compile Remove="Core\ViewModel\CakeCreateUpdateViewModel.cs" />
+    <Compile Remove="Core\ViewModel\CakesListViewModel.cs" />
+    <Compile Remove="Core\ViewModel\MyOrderViewModel.cs" />
+    <Compile Remove="Core\ViewModel\ShoppingCartViewModel.cs" />
+    <Compile Remove="Persistence\CakeRepository.cs" />
+    <Compile Remove="Persistence\CakeShopDbContext.cs" />
+    <Compile Remove="Persistence\OrderRepository.cs" />
+    <Compile Remove="Persistence\ShoppingCartService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\AddCake.cshtml" />
+    <Content Remove="Views\Admin\EditCake.cshtml" />
+    <Content Remove="Views\Admin\ManageCakes.cshtml" />
+    <Content Remove="Views\Shared\AddOrEditCake.cshtml" />
+    <Content Remove="Views\Shared\CakeView.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+    <PackageReference Include="Node.js" Version="5.3.0" />
+    <PackageReference Include="Webpack" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Persistence\DbInitializer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ServiceModel">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ServiceModel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist\main.js') ">
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target>
+  
+  <Target Name="DebugRunWebpackFristTime" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('node_modules') ">
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+    <Message Importance="high" Text="Performing  npm install..." />
+    <Exec Command="npm install" />
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target>
+  
+  <Target Name="BuildClientAssets" BeforeTargets="Publish">
+    <Exec Command="npm install" />
+    <Exec Command="npm run build:prod" />
+  </Target>
+
+</Project>
