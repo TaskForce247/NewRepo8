@@ -169,7 +169,9 @@ namespace ControlsLibrary
 
         private void myDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             DataGrid dg = sender as DataGrid;
+            dg.ItemsSource = Parent.GetType.
             DataRowView dr = dg.SelectedItem as DataRowView;
             if (dg.SelectedItems.Count != 0)
             {

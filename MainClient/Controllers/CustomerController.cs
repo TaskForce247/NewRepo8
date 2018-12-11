@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WaterLoggic.Core;
-using WaterLoggic.Core.Models;
-using WaterLoggic.Core.ViewModel;
-using WaterLoggic.Persistence;
-using MainClient;
-namespace WaterLoggic.Controllers
+using MainClient.Core;
+using MainClient.Core.Models;
+using MainClient.Core.ViewModel;
+using MainClient.Persistence;
+
+namespace MainClient.Controllers
 {
     public class CustomerController : Controller
     {
@@ -37,27 +37,17 @@ namespace WaterLoggic.Controllers
             }
             else
             {
-          //      Form1.MandatoryfieldsWarning();
+                
             }
             
         }
 
-        public void UpdateCustomer(String name, String email, String phone, String address)
+        public void UpdateCustomer()
         {
-            Customer customer = new Customer();
-            customer.Name = name;
-            customer.Phone = phone;
-            customer.Address = address;
-            customer.Email = email;
-            _customerRepository.AddCustomerAsync(customer);
+
         }
 
-        public void DeleteCustomer(int id)
-        {
-            _customerRepository.DeleteCustomer(id);
-        }
-
-        public void UpdateView()
+        public void DeleteCustomer()
         {
 
         }

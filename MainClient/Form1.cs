@@ -83,5 +83,10 @@ namespace MainClient
             ctrlMain.Refresh(tab);
 
         }
+
+        public static void MandatoryfieldsWarning()
+        {
+            MessageBox.Show("All fields are mandatory!", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        }
     }
 }

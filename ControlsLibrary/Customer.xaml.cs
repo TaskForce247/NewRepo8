@@ -34,7 +34,7 @@ namespace ControlsLibrary
             cmd.CommandText = "SELECT Customer_ID, Name, Email, Phone, Address FROM cus";
             cmd.CommandType = CommandType.Text;
             SqlDataReader dr = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable(); 
             dt.Load(dr);
             myDataGrid.ItemsSource = dt.DefaultView;
             dr.Close();

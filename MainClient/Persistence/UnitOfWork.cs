@@ -1,4 +1,4 @@
-﻿using WaterLoggic.Core;
+﻿using MainClient.Core;
 using System.Threading.Tasks;
 using MainClient.Persistence;
 
@@ -6,9 +6,9 @@ namespace MainClient.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext _context;
+        private readonly WaterLogicDbContext _context;
 
-        public UnitOfWork(AppDbContext context)
+        public UnitOfWork(WaterLogicDbContext context)
         {
             _context = context;
         }
