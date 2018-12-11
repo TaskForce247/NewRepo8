@@ -116,10 +116,6 @@ namespace ControlsLibrary
             name_txtbx.Text = "";
             phone_txtbx.Text = "";
             address_txtbx.Text = "";
-
-            add_btn.IsEnabled = true;
-            update_btn.IsEnabled = false;
-            delete_btn.IsEnabled = false;
         }
         private void reset_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -175,7 +171,7 @@ namespace ControlsLibrary
         {
             DataGrid dg = sender as DataGrid;
             DataRowView dr = dg.SelectedItem as DataRowView;
-            if (dr != null)
+            if (dg.SelectedItems.Count != 0)
             {
                 customer_id_txtbx.Text = dr["Customer_ID"].ToString();
                 name_txtbx.Text = dr["Name"].ToString();
@@ -187,6 +183,22 @@ namespace ControlsLibrary
                 update_btn.IsEnabled = true;
                 delete_btn.IsEnabled = true;
 
+            }
+            else
+            {
+                if (dg.SelectedItems.Count == 0)
+                {
+                    add_btn.IsEnabled = true;
+                    update_btn.IsEnabled = false;
+                    delete_btn.IsEnabled = false;
+                }
+                else
+                {
+                    add_btn.IsEnabled = false;
+                    update_btn.IsEnabled = false;
+                    delete_btn.IsEnabled = false;
+                }
+                resetAll();
             }
         }
     }

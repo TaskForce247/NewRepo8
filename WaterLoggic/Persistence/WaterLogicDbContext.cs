@@ -17,7 +17,7 @@ namespace WaterLoggic.Persistence
         public DbSet<MShoppingCartItem> MShoppingCartItems { get; set; }
         public DbSet<MOrder> MOrders { get; set; }
         public DbSet<MOrderDetail> MOrderDetails { get; set; }
-
+        public DbSet<Customer> Customers { get; set; }
 
         public WaterLogicDbContext(DbContextOptions<WaterLogicDbContext> options)
             : base(options)
