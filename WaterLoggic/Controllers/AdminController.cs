@@ -10,6 +10,8 @@ using WaterLoggic.Core.ViewModel;
 using WaterLoggic.Core.Models;
 using System.Transactions;
 
+using MService;
+
 namespace MachineShop.Controllers
 {
     [Authorize(Roles = "Admin")]
@@ -17,23 +19,23 @@ namespace MachineShop.Controllers
     public class AdminController : Controller
     {
         private readonly IMOrderRepository _orderRepository;
-        private readonly IMachineRepository _machineRepository;
+        private readonly MachineRepositoryClient _machineRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IMCategoryRepository _categoryRepository;
+
 
         public AdminController(
             IMOrderRepository orderRepository,
-            IMachineRepository machineRepository,
+            MachineRepositoryClient machineRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork,
-            IMCategoryRepository categoryRepository)
+            IUnitOfWork unitOfWork
+            )
         {
             _orderRepository = orderRepository;
             _machineRepository = machineRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
-            _categoryRepository = categoryRepository;
+           
         }
 
         [HttpGet("allOrders")]
@@ -47,17 +49,17 @@ namespace MachineShop.Controllers
         [HttpGet("")]
         public async Task<IActionResult> ManageMachines()
         {
-            var machines = await _machineRepository.GetAllMachinesNameId();
+            var machines = await _machineRepository.GetAllMachinesNameIdAsync();
             return View(machines);
         }
 
         [HttpGet("add")]
         public async Task<IActionResult> AddMachine()
         {
-            var category = await _categoryRepository.GetCategories();
+           // var category = await MachineRepositoryClient.GetCategoriesAsync();
             return View(new MachineCreateUpdateViewModel
             {
-                Categories = category
+                //Categories = category
             });
         }
 
@@ -66,11 +68,11 @@ namespace MachineShop.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var category = await _categoryRepository.GetCategories();
+                var category = await _machineRepository.GetCategoriesAsync();
                 return View(new MachineCreateUpdateViewModel
                 {
                     MachineDto = machineDto,
-                    Categories = category
+                   // Categories = category
                 });
             }
             var machine = _mapper.Map<MachineDto, Machine>(machineDto);
@@ -82,13 +84,13 @@ namespace MachineShop.Controllers
         [HttpGet("edit/{id}")]
         public async Task<IActionResult> EditMachine(int id, byte[] rowversion)
         {
-            var machine = await _machineRepository.GetMachineById(id);
+            var machine = await _machineRepository.GetMachineByIdAsync(id);
             var machineDto = _mapper.Map<Machine, MachineDto>(machine);
-            var category = await _categoryRepository.GetCategories();
+            var category = await _machineRepository.GetCategoriesAsync();
 
             return View(new MachineCreateUpdateViewModel
             {
-                Categories = category,
+              //  Categories = category,
                 MachineDto = machineDto
             });
         }
@@ -102,17 +104,17 @@ namespace MachineShop.Controllers
                 //{
                     if (!ModelState.IsValid)
                     {
-                        var category = await _categoryRepository.GetCategories();
+                        var category = await _machineRepository.GetCategoriesAsync();
                         return View(new MachineCreateUpdateViewModel
                         {
-                            Categories = category,
+                            //Categories = category,
                             MachineDto = machineDto
                         });
                     }
                     var machine = _mapper.Map<MachineDto, Machine>(machineDto);
                     machine.Id = id;
 
-                    _machineRepository.UpdateMachine(machine);
+                    _machineRepository.UpdateMachineAsync(machine);
                     await _unitOfWork.CompleteAsync();
                     return RedirectToAction("ManageMachines");
                    // tran.Complete();
@@ -127,7 +129,7 @@ namespace MachineShop.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMachine(int id)
         {
-            _machineRepository.Delete(id);
+            _machineRepository.DeleteAsync(id);
             await _unitOfWork.CompleteAsync();
             return Ok();
         }

@@ -4,15 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WaterLoggic.Core;
 
+using MService;
+
 namespace WaterLoggic.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IMachineRepository _machineRepository;
+        private readonly MachineRepositoryClient _machineRepository;
 
-        public HomeController(IMachineRepository machineRepository)
+        public HomeController()
         {
-            _machineRepository = machineRepository;
+           // _machineRepository = machineRepository;
         }
 
         public async Task<IActionResult> Index()

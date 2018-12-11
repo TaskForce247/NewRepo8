@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MService;
 using WaterLoggic.Core;
 using WaterLoggic.Core.ViewModel;
 
@@ -11,13 +13,13 @@ namespace WaterLoggic.Controllers
 {
     public class MachineController : Controller
     {
-        private readonly IMachineRepository _machineRepository;
-        private readonly IMCategoryRepository _mcategoryRepository;
+        private readonly MachineRepositoryClient _machineRepository;
+        //private readonly IMCategoryRepository _mcategoryRepository;
 
-        public MachineController(IMachineRepository machineRepository, IMCategoryRepository mcategoryRepository)
+        public MachineController(MachineRepositoryClient machineRepository)
         {
             _machineRepository = machineRepository;
-            _mcategoryRepository = mcategoryRepository;
+           // _mcategoryRepository = mcategoryRepository;
         }
 
         [HttpGet("machines/{category?}")]
@@ -26,7 +28,7 @@ namespace WaterLoggic.Controllers
             var selectedCategory = !string.IsNullOrWhiteSpace(category) ? category : null;
             var machinesListViewModel = new MachinesListViewModel
             {
-                Machines = await _machineRepository.GetMachines(selectedCategory),
+              //  Machines = await _machineRepository.GetMachinesAsync(selectedCategory),
                 CurrentCategory = selectedCategory ?? "All Machines"
             };
             return View(machinesListViewModel);
@@ -36,7 +38,7 @@ namespace WaterLoggic.Controllers
         public async Task<IActionResult> Details(int id)
         {
 
-            var machine = await _machineRepository.GetMachineById(id);
+            var machine = await _machineRepository.GetMachineByIdAsync(id);
 
             return View(machine);
         }

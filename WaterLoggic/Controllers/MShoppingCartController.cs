@@ -1,5 +1,7 @@
 ﻿
+
 using Microsoft.AspNetCore.Mvc;
+using MService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +10,17 @@ using WaterLoggic.Core;
 using WaterLoggic.Core.Models;
 using WaterLoggic.Core.ViewModel;
 
+
 namespace WaterLoggic.Controllers
 {
     public class MShoppingCartController : Controller
     {
         List<Machine> machineList = new List<Machine>();
         public bool canuse = false;
-        private readonly IMachineRepository _machineRepository;
+        private readonly MachineRepositoryClient _machineRepository;
         private readonly IMShoppingCartService _shoppingCart;
 
-        public MShoppingCartController(IMachineRepository machineRepository, IMShoppingCartService shoppingCart)
+        public MShoppingCartController(MachineRepositoryClient machineRepository, IMShoppingCartService shoppingCart)
         {
             _machineRepository = machineRepository;
             _shoppingCart = shoppingCart;
@@ -42,7 +45,7 @@ namespace WaterLoggic.Controllers
         public async Task<IActionResult> AddToShoppingCart(int machineId)
         {
             
-            var selectedMachine = await _machineRepository.GetMachineById(machineId);
+            var selectedMachine = await _machineRepository.GetMachineByIdAsync(machineId);
             if (selectedMachine == null || selectedMachine.stock == 0)
             {
                 return NotFound();
@@ -53,7 +56,7 @@ namespace WaterLoggic.Controllers
                 selectedMachine.stock = selectedMachine.stock - 1;
                
                 await _shoppingCart.AddToCartAsync(selectedMachine);
-                _machineRepository.UpdateMachine(selectedMachine);
+                _machineRepository.UpdateMachineAsync(selectedMachine);
                 canuse = true;
             }
 
@@ -66,7 +69,7 @@ namespace WaterLoggic.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveFromShoppingCart(int machineId)
         {
-            var selectedMachine = await _machineRepository.GetMachineById(machineId);
+            var selectedMachine = await _machineRepository.GetMachineByIdAsync(machineId);
             if (selectedMachine == null)
             {
                 return NotFound();
@@ -74,7 +77,7 @@ namespace WaterLoggic.Controllers
             selectedMachine.stock = selectedMachine.stock + 1;
             selectedMachine.available = true;
             await _shoppingCart.RemoveFromCartAsync(selectedMachine);
-            _machineRepository.UpdateMachine(selectedMachine);
+            _machineRepository.UpdateMachineAsync(selectedMachine);
             return RedirectToAction("Index");
         }
 

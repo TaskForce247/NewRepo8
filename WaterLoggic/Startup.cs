@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-
+using MService;
 using CakeShop.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,8 +26,9 @@ namespace CakeShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<IMachineRepository, MachineRepository>();
-            services.AddScoped<IMCategoryRepository, MCategoryRepository>();
+           // services.AddScoped<IMachineRepository, MachineRepositoryClient>();
+            //services.AddScoped<IMachineRepository, MachineRepository>();
+            //services.AddScoped<IMCategoryRepository, MCategoryRepository>();
             services.AddScoped<IMOrderRepository, MOrderRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IMShoppingCartService>(sp => MShoppingCartService.GetCart(sp));

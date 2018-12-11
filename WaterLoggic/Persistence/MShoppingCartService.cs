@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WaterLoggic.Core;
 
+using MService;
 
 namespace WaterLoggic.Persistence
 {
@@ -134,6 +135,16 @@ namespace WaterLoggic.Persistence
              .ToListAsync();
 
             return MShoppingCartItems;
+        }
+
+        public Task<int> RemoveFromCartAsync(Machine selectedMachine, int qty = -1)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IMShoppingCartService.RemoveFromCartAsync(Machine selectedMachine)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,13 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MService;
 
 namespace WaterLoggic.Persistence
 {
     public class WaterLogicDbContext : IdentityDbContext<IdentityUser>
     {
 
-        public DbSet<Machine> Machines { get; set; }
+    //    public DbSet<Machine> Machines { get; set; }
         public DbSet<MCategory> Categories { get; set; }
         public DbSet<MShoppingCartItem> MShoppingCartItems { get; set; }
         public DbSet<MOrder> MOrders { get; set; }

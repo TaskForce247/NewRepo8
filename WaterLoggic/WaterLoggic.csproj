@@ -29,10 +29,14 @@
     <Compile Remove="Core\Dto\OrderDto.cs" />
     <Compile Remove="Core\ICakeRepository.cs" />
     <Compile Remove="Core\ICategoryRepository.cs" />
+    <Compile Remove="Core\IMachineRepository.cs" />
+    <Compile Remove="Core\IMCategoryRepository.cs" />
     <Compile Remove="Core\IOrderRepository.cs" />
     <Compile Remove="Core\IShoppingCartService.cs" />
     <Compile Remove="Core\Models\Cake.cs" />
     <Compile Remove="Core\Models\Category.cs" />
+    <Compile Remove="Core\Models\Machine.cs" />
+    <Compile Remove="Core\Models\MCategory.cs" />
     <Compile Remove="Core\Models\Order.cs" />
     <Compile Remove="Core\Models\OrderDetail.cs" />
     <Compile Remove="Core\Models\ShoppingCartItem.cs" />
@@ -42,6 +46,10 @@
     <Compile Remove="Core\ViewModel\ShoppingCartViewModel.cs" />
     <Compile Remove="Persistence\CakeRepository.cs" />
     <Compile Remove="Persistence\CakeShopDbContext.cs" />
+    <Compile Remove="Persistence\CategoryRepository.cs" />
+    <Compile Remove="Persistence\DbInitializer.cs" />
+    <Compile Remove="Persistence\MachineRepository.cs" />
+    <Compile Remove="Persistence\MCategoryRepository.cs" />
     <Compile Remove="Persistence\OrderRepository.cs" />
     <Compile Remove="Persistence\ShoppingCartService.cs" />
   </ItemGroup>
@@ -63,15 +71,15 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
     <PackageReference Include="Node.js" Version="5.3.0" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
     <PackageReference Include="Webpack" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Persistence\DbInitializer.cs" />
   </ItemGroup>
 
   <ItemGroup>

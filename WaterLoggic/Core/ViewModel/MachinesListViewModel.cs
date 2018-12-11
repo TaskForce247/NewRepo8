@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MService;
 
 namespace WaterLoggic.Core.ViewModel
 {
@@ -10,6 +11,8 @@ namespace WaterLoggic.Core.ViewModel
     {
         public IEnumerable<Machine> Machines { get; set; }
         public string CurrentCategory { get; set; }
+
+  
     }
 }
 

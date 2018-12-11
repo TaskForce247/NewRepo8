@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MService;
 using WaterLoggic.Core.Dto;
 using WaterLoggic.Core.Models;
 
