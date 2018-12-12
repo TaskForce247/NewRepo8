@@ -25,7 +25,7 @@ namespace WaterLoggic.Persistence
         }
 
 
-        public async Task<IEnumerable<Machine>> GetMachines(string category = null)
+        public async Task<List<Machine>> GetMachines(string category = null)
         {
 
             var query = _context.Machines
@@ -41,7 +41,7 @@ namespace WaterLoggic.Persistence
         }
 
  
-        public async Task<IEnumerable<MachineNameIdDto>> GetAllMachinesNameId()
+        public async Task<List<MachineNameIdDto>> GetAllMachinesNameId()
         {
             return await _context.Machines
                  .Select(e => new MachineNameIdDto
@@ -69,7 +69,7 @@ namespace WaterLoggic.Persistence
             _context.Entry(machine).State = EntityState.Deleted;
         }
 
-        public async Task<IEnumerable<MCategory>> GetCategoriesAsync()
+        public async Task<List<MCategory>> GetCategoriesAsync()
         {
             return await _context.Categories.ToListAsync();
         }

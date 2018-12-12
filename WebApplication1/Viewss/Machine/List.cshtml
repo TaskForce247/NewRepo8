@@ -1,0 +1,18 @@
+﻿@model MachinesListViewModel
+
+@if (Model.Machines?.Count() > 0)
+{
+    <h1>@Model.CurrentCategory</h1>
+    <div class="row">
+        @foreach (var machine in Model.Machines)
+        {
+            @await Html.PartialAsync("MachineView", machine);
+        }
+    </div>
+}
+else
+{
+    <h1>Machines</h1>
+    <p>Sorry! Not machiness are found in '@Model.CurrentCategory' category. </p>
+}
+

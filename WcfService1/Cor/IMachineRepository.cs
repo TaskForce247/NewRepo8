@@ -13,11 +13,11 @@ namespace WaterLoggic.Core
     public interface IMachineRepository 
     {
         [OperationContract]
-        Task<IEnumerable<Machine>> GetMachines(string category = null);
+        Task<List<Machine>> GetMachines(string category = null);
         [OperationContract]
         Task<Machine> GetMachineById(int machineId);
         [OperationContract]
-        Task<IEnumerable<MachineNameIdDto>> GetAllMachinesNameId();
+        Task<List<MachineNameIdDto>> GetAllMachinesNameId();
         [OperationContract]
         void UpdateMachine(Machine machine);
         [OperationContract]
@@ -25,6 +25,6 @@ namespace WaterLoggic.Core
         [OperationContract]
         void Delete(int id);
         [OperationContract]
-        Task<IEnumerable<MCategory>> GetCategoriesAsync();
+        Task<List<MCategory>> GetCategoriesAsync();
     }
 }

@@ -18,8 +18,9 @@ namespace MachineShop.Controllers
     [Route("/admin/manageMachines")]
     public class AdminController : Controller
     {
+        MService.MachineRepositoryClient _machineRepository = new MService.MachineRepositoryClient();
         private readonly IMOrderRepository _orderRepository;
-        private readonly MachineRepositoryClient _machineRepository;
+        //private readonly MachineRepositoryClient _machineRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
@@ -43,7 +44,8 @@ namespace MachineShop.Controllers
         {
             ViewBag.ActionTitle = "All Orders";
             var orders = await _orderRepository.GetAllOrdersAsync();
-            return View(orders);
+             return View(orders);
+           
         }
 
         [HttpGet("")]

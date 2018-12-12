@@ -26,7 +26,8 @@ namespace CakeShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-           // services.AddScoped<IMachineRepository, MachineRepositoryClient>();
+            services.AddSingleton(new MService.MachineRepositoryClient());
+           services.AddScoped<IMachineRepository, MachineRepositoryClient>();
             //services.AddScoped<IMachineRepository, MachineRepository>();
             //services.AddScoped<IMCategoryRepository, MCategoryRepository>();
             services.AddScoped<IMOrderRepository, MOrderRepository>();

@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainClient", "MainClient\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1.csproj", "{AFC9F7B0-ABA9-42B8-835A-6E6301B61234}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{F96E2CFA-7D83-42CB-B191-352211893901}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC9F7B0-ABA9-42B8-835A-6E6301B61234} = {AFC9F7B0-ABA9-42B8-835A-6E6301B61234}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +44,10 @@ Global
 		{AFC9F7B0-ABA9-42B8-835A-6E6301B61234}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFC9F7B0-ABA9-42B8-835A-6E6301B61234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFC9F7B0-ABA9-42B8-835A-6E6301B61234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F96E2CFA-7D83-42CB-B191-352211893901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F96E2CFA-7D83-42CB-B191-352211893901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F96E2CFA-7D83-42CB-B191-352211893901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F96E2CFA-7D83-42CB-B191-352211893901}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

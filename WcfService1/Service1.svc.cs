@@ -26,12 +26,12 @@ namespace WcfService1
             Delete(id);
         }
 
-        public Task<IEnumerable<MachineNameIdDto>> GetAllMachinesNameId()
+        public Task<List<MachineNameIdDto>> GetAllMachinesNameId()
         {
             return GetAllMachinesNameId();
         }
 
-        public Task<IEnumerable<MCategory>> GetCategoriesAsync()
+        public Task<List<MCategory>> GetCategoriesAsync()
         {
             return GetCategoriesAsync();
         }
@@ -41,7 +41,7 @@ namespace WcfService1
             return GetMachineById(machineId);
         }
 
-        public Task<IEnumerable<Machine>> GetMachines(string category = null)
+        public Task<List<Machine>> GetMachines(string category = null)
         {
             return GetMachines(category);
 
