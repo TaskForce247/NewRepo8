@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlsLibrary", "Controls
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainClient", "MainClient\MainClient.csproj", "{0C72404F-2BEC-4FCC-BE5F-D5B00406BC02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApp", "WindowsApp\WindowsApp.csproj", "{8A6769BB-8522-42CD-B3CA-4E4072607A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMVVM", "..\..\..\..\Desktop\WPF.MVVM\WpfData\CustomerMVVM.csproj", "{CB2876CA-D65A-4261-B228-5B3C955FA9DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{0C72404F-2BEC-4FCC-BE5F-D5B00406BC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C72404F-2BEC-4FCC-BE5F-D5B00406BC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C72404F-2BEC-4FCC-BE5F-D5B00406BC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6769BB-8522-42CD-B3CA-4E4072607A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6769BB-8522-42CD-B3CA-4E4072607A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6769BB-8522-42CD-B3CA-4E4072607A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6769BB-8522-42CD-B3CA-4E4072607A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB2876CA-D65A-4261-B228-5B3C955FA9DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB2876CA-D65A-4261-B228-5B3C955FA9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB2876CA-D65A-4261-B228-5B3C955FA9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB2876CA-D65A-4261-B228-5B3C955FA9DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

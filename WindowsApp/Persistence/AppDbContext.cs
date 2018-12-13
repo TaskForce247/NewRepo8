@@ -11,6 +11,12 @@ namespace MainClient.Persistence
 {
     public class AppDbContext : IdentityDbContext<IdentityUser>
     {
+
+        public DbSet<Machine> Machines { get; set; }
+        public DbSet<MCategory> Categories { get; set; }
+        public DbSet<MShoppingCartItem> MShoppingCartItems { get; set; }
+        public DbSet<MOrder> MOrders { get; set; }
+        public DbSet<MOrderDetail> MOrderDetails { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
         public AppDbContext(DbContextOptions<WaterLogicDbContext> options)

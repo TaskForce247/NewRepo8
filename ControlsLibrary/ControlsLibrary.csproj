@@ -60,6 +60,7 @@
     <Compile Include="CustomerCon.xaml.cs">
       <DependentUpon>CustomerCon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomersView.xaml.cs" />
     <Compile Include="Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
     </Compile>
